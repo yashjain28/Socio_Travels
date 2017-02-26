@@ -27,7 +27,40 @@ display: block;
   margin: 25px 15px 25px 0;
 }
 
-.main_cont {
-  margin:-18px 0px;
-  background-image: url('../smile.jpg');
+.content{
+  /* This image will be displayed fullscreen */
+  
+  position:relative;
+  /* Ensure the html element always takes up the full height of the browser window */
+  min-height:100%;
+
+  /* The Magic */
+ 
+}
+
+.bg-image{
+  position: absolute;
+  z-index:0;
+  opacity: 0.7;
+}
+
+.fg-image{
+  position: absolute;
+  z-index:1;
+  margin-left:300px;
+  margin-top:100px;
+}
+
+.content{
+  margin-left:-190px;
+}
+
+.snap_container
+{
+  margin-left: 4;
+  margin: 2;
+}
+
+blockquote{
+  background-color: white
 }

@@ -42,7 +42,7 @@
             </ul>
           </li>
 
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
         </ul>
 
       </div>
@@ -51,24 +51,70 @@
     <!--/.container-fluid -->
   </nav>
 </div>
-<div class="main_cont">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p></br>
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p></br>
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p></br>
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p></br>
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p></br>
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p></br>
+
+<div class="container">
+<div class="content" style="margin-top:-20px">
+  </br>
+
+  <div class="row bg-image" style="height:100%;">
+      <img src="/images/smile.jpg" style="width:1532px"/>
     </div>
-    <div class="col-md-4 text-center">
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p>
+  <h2> HOW YOU <strong>CAN HELP</strong></h2>
+
+  <!-- foreground -->
+  <div class="row fg-image text-center center-block" style="height:100%; margin-top:20px">
+    <div class="col-md-4">
+      <blockquote>
+        <img class="child" src="/images/animals.jpg" height="200" width="200">
+        <h3>The PAWS Chicago Fur Ball</h3>
+        <p  align="left"> PAWS Chicago’s fundraising events directly fund the lifesaving programs for homeless pets.</p>
+        <a href="#" class="btn btn-primary clickable" >Register</a>
+        <a href="#" class="btn btn-primary invite">Invite Friends</a>
+        <a href="http://www.pawschicago.org/events-dog-training/fundraising-events/fur-ball-event/">Details</a>
+
+      </blockquote>
     </div>
-    <div class="col-md-4 text-center">
-      <p> jskjdksbjsdb</br>kjdbdhskbs</p>
+    <div class="col-md-4">
+      <blockquote>
+        <img class="child" src="/images/kids.jpg" height="200" width="200">
+        <h3>Racing for PHIT kids chanrity events</h3>
+        <p align="left"> PHIT KIDS Charity Events are local tennis events who are giving a portion of their events proceeds to PHIT America.</p>
+        <div >
+        <a href="#" class="btn btn-primary clickable">Register</a>
+          <a href="#" class="btn btn-primary invite">Invite Friends</a>
+          <a href="http://www.phitamerica.org/Programs/PHIT_KIDS_CHARITY_EVENTS/RACE.htm">Details</a>
+        </div>
+      </blockquote>
+    </div>
+    <div class="col-md-4">
+      <blockquote>
+        <img class="child" src="/images/old.jpg" height="200" width="200">
+        <h3>Help elderly</h3>
+        <p align="left">Aasra-Ray of hope- we are doing charity cum event at Shreyas old age.</p>
+        <a href="#" class="btn btn-primary clickable">Register</a>
+        <a href="#" class="btn btn-primary invite">Invite Friends</a>
+        <a href="https://www.meetup.com/Bangalore-Charity-Events-Meetup/events/229143532/">Details</a>
+      </blockquote>
     </div>
   </div>
 </div>
-
+</div>
 </body>
+
+<script type="text/javascript">
+  jQuery('.clickable').on('click', function () {
+    jQuery.get('/sendMessage', function () {
+      bootbox.confirm('Are you sure you want to confirm for the event?', function (res) {
+        bootbox.confirm('Thank you. A Confirmation message has been sent to the organization.', function (res) {
+        })
+      })
+    });
+  });
+
+  jQuery('.invite').on('click', function () {
+    jQuery.get('/invite', function () {
+      bootbox.alert('A message has been sent to your friends')});
+  });
+</script>
+
 </html>

@@ -26,3 +26,19 @@ display: block;
   padding: 10px;
   margin: 25px 15px 25px 0;
 }
+
+.bg-image{
+  position: absolute;
+  z-index:0;
+  opacity: 0.8;
+}
+
+.fg-image{
+  position: absolute;
+  z-index:1;
+}
+
+.content{
+  margin-left:-190px;
+  margin-top:-20px;
+}

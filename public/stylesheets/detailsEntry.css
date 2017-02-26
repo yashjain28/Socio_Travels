@@ -32,5 +32,25 @@ display: block;
 }
 
 .form-inline > *{
-  margin: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 5 px;
+}
+
+.bg-image{
+  position: absolute;
+  z-index:0;
+  opacity: 0.8;
+}
+
+.fg-image{
+  position: absolute;
+  z-index:1;
+}
+
+.content{
+  margin-left:-190px;
+  margin-top:-20px;
+}
+
+#sgf{
+  padding-top: 50px
 }

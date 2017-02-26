@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
   <title>HackIllinois 2017</title>
   <meta charset="utf-8">
@@ -53,44 +53,200 @@
   <div class="row">
     <div class="col-md-3">
     </div>
-
+    <div>
+      <a class="btn btn-primary pull-right" onclick="simulate()">Continue</a>
+    </div>
     <h2>FLIGHT DETAILS</h2>
 
-    <div class="list-group">
-      <div class="row">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start col-md-4">
-          <div class="row">
-            <div class="d-flex w-100 justify-content-between col-md-8">
-              <h4 class="mb-1">GNV --> BOS</h4>
-              <small>3 hrs/No navbar-static-top</small>
-              <h4>$150</h4>
-            </div>
-            <div  class="col-md-4">
-              <img src="https://www.amadeus.net/static/img/static/airlines/medium/DL.png" alt="Delta">
-            </div>
-          </div>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start col-md-4">
-          <div class="row">
-            <div class="d-flex w-100 justify-content-between col-md-8">
-              <h4 class="mb-1">GNV --> BOS</h4>
-              <small>3 hrs/No navbar-static-top</small>
-              <h4>$150</h4>
-            </div>
-            <div  class="col-md-4">
-              <img src="https://www.amadeus.net/static/img/static/airlines/medium/DL.png" alt="Delta">
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
+    <div class="list-group" id="listview">
 
-    <div>
-      <a href="ngo" class="btn btn-primary pull-right">Continue</a>
-    </div>
+</div>
     </div></div>
+
+<div id='1' class="flightDet">
+<p>Click here</p>
+<div id="2">
+  <table class="table">
+    <thead>
+        <td>Hotel Details</td>
+        <td>Hotel Name</td>
+        <td>Hotel Rating</td>
+        <td>Hotel Price</td>
+        <td></td>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <p>
+          World Centre Marriot
+        </p>
+      </td>
+      <td>
+        <p>
+          <a href="#">Rating: 4.8/5.0</a>
+        </p>
+      </td>
+      <td>
+        <p>
+          <a href="#">Price: $200</a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>
+          Ramanda Suites
+        </p>
+      </td>
+      <td>
+        <p>
+          <a href="#">Rating: 4.4/5.0</a>
+        </p>
+      </td>
+      <td>
+        <p>
+          <a href="#">Price: $180</a>
+        </p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <h5></h5>
+  <h7>Hotel A</h7>
+  <p>Price/day:  40 USD</p>
+</div>
+<div id="3">
+    <p>Ride Details</p>
+</div>
+</div>
+
+</div></div>
+</div></div>
+</div></div>
+</div>
+
+<div id="flight" class="flight"></div>
+<div class="runway">
+</div>
 </body>
+
   <script type="text/javascript">
 
+            jQuery(document).ready(function() {
+
+              var url = window.location.href;
+              console.log(url);
+              var source_val = getParameterByName('source',url);
+              var destination_val = getParameterByName('destination',url);
+              var startdate=getParameterByName('dept',url);
+              var duration='15';
+
+              jQuery.get('/flighturl?source='+source_val+'&destination='+destination_val+'&=',function (data) {
+                var result=data.results;
+                var rows = result.map(function(item){
+                  return createRow(source_val,destination_val, item.departure_date,item.return_date,item.price,item.airline);
+                });
+
+                /*jQuery('#listview>a').first().click(function(){
+                  //modify
+                  jQuery(this).children().first().next().innerHTML='<p>Hello</p>';
+                  jQuery(this).children().first().next().next().innerHTML='<p>world </p>';
+                  jQuery(jQuery(this).children().first().next()).slideToggle( "slow" );
+                  jQuery(jQuery(this).children().first().next().next()).slideToggle( "slow" );
+                });*/
+
+              });
+            });
+
+  function createRow(source, dest,deptdate,retdate,price,airline) {
+
+      var images = ["https://www.aa.com/newamerican/img/newLook1.jpg?01AD=3KJ8dVpvCQkLhLIqBem0kxTNhddqAoQasQvzPXxqHOEnvskQp7ynPZA&01RI=38AD1163BACE869&01NA=",
+          "https://www.amadeus.net/static/img/static/airlines/medium/DL.png"];
+      var random = images[Math.floor(Math.random()*images.length)];
+      var allbox= document.createElement("div");
+      //var flightdetailsbox=document.createElement("div");
+      var cardetailsbox=document.createElement("div");
+      var hoteldetailsbox=document.createElement("div");
+
+      var mainLvItem = document.createElement("div");
+      var lvitem1 = document.createElement("a");
+      var div1 = document.createElement("div");
+      var div2 = document.createElement("div");
+      var h41 = document.createElement("h4");
+      var h42 = document.createElement("h4");
+      var deptDate = document.createElement("h4");
+      var retDate = document.createElement("h4");
+      var aLogoDiv = document.createElement("div");
+      var aLogo = document.createElement("img");
+
+      var hotelDiv = document.createElement("div");
+      var carDiv = document.createElement("div");
+
+
+      div2.setAttribute("class", "d-flex w-100 justify-content-between col-md-8");
+      div1.setAttribute("class", "row");
+      lvitem1.setAttribute("class","list-group-item list-group-item-action flex-column align-items-start");// col-md-4
+      aLogoDiv.setAttribute("class", "col-md-4");
+      aLogo.setAttribute("src", random);
+      aLogo.setAttribute("alt", "Delta");
+      aLogo.setAttribute("style", "width:50px; height:50px");
+      aLogoDiv.appendChild(aLogo);
+      h41.setAttribute("class","mb-1");
+      h41.innerHTML = source + '&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;' + dest +
+                      '&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp;' + source;
+      h42.innerHTML = "Price: $"+price;
+      deptDate.innerHTML = "Departure date: "+deptdate;
+      retDate.innerHTML =  "Return date:   "+retdate;
+
+      div2.appendChild(h41);
+      div2.appendChild(h42);
+      div2.appendChild(deptDate);
+      div2.appendChild(retDate);
+
+      div1.appendChild(div2);
+      div1.appendChild(aLogoDiv);
+
+      lvitem1.appendChild(div1);
+      mainLvItem.appendChild(lvitem1);
+      mainLvItem.appendChild(hotelDiv);
+      mainLvItem.appendChild(carDiv);
+
+      jQuery("#listview").append(mainLvItem);
+      //jQuery("#listview").append(lvitem1);
+      //jQuery("#listview").append(lvitem1);
+
+
+
+      jQuery("#listview").attr("style", "padding:0px 100px 0px 100px");
+
+            var flightdetailsbox = jQuery("#listview");
+            allbox.innerHTML = flightdetailsbox;
+            allbox.appendChild(hoteldetailsbox);
+            allbox.appendChild(cardetailsbox);
+
+            return allbox;
+            }
+
+    function getParameterByName(name, url) {
+              if (!url) {
+                url = window.location.href;
+              }
+              name = name.replace(/[\[\]]/g, "\\$&");
+              var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                      results = regex.exec(url);
+              if (!results) return null;
+              if (!results[2]) return '';
+              return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            function simulate(){
+              $("#flight").addClass("run");
+
+              setTimeout(function(){$("#flight").removeClass("run");},10000);
+              setTimeout(function(){window.location.href="ngo";},5000);
+            }
+
+
+
   </script>
+
 </html>

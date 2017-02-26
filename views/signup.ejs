@@ -51,14 +51,22 @@
       <!--/.container-fluid -->
     </nav>
   </div>
+
   <div class="container">
-    <div class="row">
-      <div class="col-md-3">
+    <div class="content">
+
+      <!-- background -->
+      <div class="row bg-image" style="height:100%;">
+        <img src="/images/scenery.jpg" style="width:1532px"/>
       </div>
+
+      <div class="row" style="padding-top:50px">
+        <div class="col-md-4">
+        </div>
       <div class="col-md-6 jumbotron">
         <div class="col-md-9">
-          <h2><i class="fa fa-user-o" aria-hidden="true"></i> SignUp</h2>
-          <form>
+          <h2><i class="fa fa-user-o" aria-hidden="true"></i> SignUp</h2></br>
+            <form>
             <div class="form-group">
               <label>First Name</label>
               <input type="text" name="firstname" class="form-control">
@@ -91,14 +99,15 @@
       </div>
     </div>
   </div>
+    </div>
   </body>
 
 
 
   <script type="text/javascript">
-    $(document).ready(function() {
-      $('#login').on('click', function (data) {
-        $.get('/login',function (data) {
+    jQuery(document).ready(function() {
+      jQuery('#login').on('click', function (data) {
+        jQuery.get('/login',function (data) {
           //do nothing
         });
       });
