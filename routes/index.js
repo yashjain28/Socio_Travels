@@ -3,7 +3,7 @@ var router = express.Router();
 var fb = require('../public/javascripts/fb');
 var constants = require("../integration/constants");
 var twHelper = require('../public/javascripts/twilio');
-var key='xFxTgyQg2Np4qv009WGx2ntuPAg4FQRe';
+var key='use your amaedeus key here';
 var http = require('http');
 
 
